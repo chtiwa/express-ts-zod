@@ -5,7 +5,6 @@ const asyncWrapper = (fn: any) => {
     try {
       await fn(req, res, next);
     } catch (error) {
-      console.log(error);
       next(error);
     }
   };

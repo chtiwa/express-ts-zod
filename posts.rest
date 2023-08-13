@@ -5,5 +5,5 @@ POST http://localhost:5000/api/v1/posts
 Content-Type: application/json
 
 {
-    "title":"cool"
+    # "title":""
 }

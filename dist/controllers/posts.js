@@ -21,7 +21,6 @@ const getPost = asyncWrapper((req, res) => __awaiter(void 0, void 0, void 0, fun
 }));
 const createPost = asyncWrapper((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { title } = req.body;
-    console.log(req.body);
     const post = yield Post.create({ title: title });
     res.status(201).json({ success: true, post: post });
 }));
@@ -33,7 +32,7 @@ const updatePost = asyncWrapper((req, res) => __awaiter(void 0, void 0, void 0, 
 }));
 const deletePost = asyncWrapper((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const post = yield Post.findByIdAndDelete({ _id: id });
+    yield Post.findByIdAndDelete({ _id: id });
     res.status(204).json({ success: true });
 }));
 module.exports = { getPosts, getPost, createPost, updatePost, deletePost };

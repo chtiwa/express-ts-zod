@@ -14,7 +14,6 @@ const getPost = asyncWrapper(async (req: Request, res: Response) => {
 
 const createPost = asyncWrapper(async (req: Request, res: Response) => {
   const { title } = req.body;
-  console.log(req.body);
   const post = await Post.create({ title: title });
   res.status(201).json({ success: true, post: post });
 });
@@ -32,7 +31,7 @@ const updatePost = asyncWrapper(async (req: Request, res: Response) => {
 
 const deletePost = asyncWrapper(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const post = await Post.findByIdAndDelete({ _id: id });
+  await Post.findByIdAndDelete({ _id: id });
   res.status(204).json({ success: true });
 });
 

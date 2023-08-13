@@ -1,10 +1,10 @@
 "use strict";
 class BaseError extends Error {
-    constructor(name, httpCode, messsage) {
+    constructor(name, statusCode, messsage) {
         super(messsage);
         Object.setPrototypeOf(this, new.target.prototype);
         this.name = name;
-        this.httpCode = httpCode;
+        this.statusCode = statusCode;
         Error.captureStackTrace(this);
     }
 }
