@@ -14,6 +14,7 @@ const errorHandler = (err, req, res) => {
     }
     else if (err.name === "Validation error") {
         const message = Object.values(err.errors)
+            // @ts-ignore
             .map((err) => err.message)
             .join("");
         error = new BaseError(message, 400);
@@ -23,7 +24,7 @@ const errorHandler = (err, req, res) => {
     }
     return res.status(error.statusCode || 500).json({
         success: false,
-        message: error.message || "Internal server error!",
+        message: error.message || "Internal server error!"
     });
 };
 module.exports = errorHandler;
