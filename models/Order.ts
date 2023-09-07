@@ -15,7 +15,7 @@ const OrderSchema = new mongoose.Schema(
     price: { type: Number },
     status: { type: String, default: "Pending" },
     userEmail: { type: String },
-    intent_id: { type: String, unique: true },
+    intent_id: { type: String },
     isConfirmed: { type: Boolean, default: false }
   },
   { timestamps: true }

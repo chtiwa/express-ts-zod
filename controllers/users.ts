@@ -3,6 +3,14 @@ import { Request, Response } from "express"
 const User = require("../models/User")
 const asyncWrapper = require("../middleware/async-wrapper")
 
+const getUser = asyncWrapper(async (req: Request, res: Response) => {
+  const user = await User.findOne({ email: req.params.email })
+  res.status(200).json({
+    success: true,
+    user: user
+  })
+})
+
 const authenticate = asyncWrapper(async (req: Request, res: Response) => {
   // @ts-ignore
   const { email } = req.body
@@ -47,4 +55,4 @@ const logout = asyncWrapper(async (req: Request, res: Response) => {
     })
 })
 
-module.exports = { authenticate, logout }
+module.exports = { authenticate, logout, getUser }

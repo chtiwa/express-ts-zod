@@ -3,7 +3,12 @@ const Product = require("../models/Product")
 const asyncWrapper = require("../middleware/async-wrapper")
 
 const getProducts = asyncWrapper(async (req: Request, res: Response) => {
-  const products = await Product.find()
+  let products
+  if (req.query.category) {
+    products = await Product.find({ category: req.query.category })
+  } else {
+    products = await Product.find()
+  }
   res.status(200).json({ success: true, products: products })
 })
 
@@ -14,6 +19,8 @@ const getProduct = asyncWrapper(async (req: Request, res: Response) => {
 })
 
 const createProduct = asyncWrapper(async (req: Request, res: Response) => {
+  // @ts-ignore
+  console.log(req.user)
   const { title, image, options, description, category, price } = req.body
   const product = await Product.create({
     title,

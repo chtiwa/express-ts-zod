@@ -22,6 +22,9 @@ const authentication = async (
       throw new UnauthorizedError()
     }
 
+    // @ts-ignore
+    req.user = payload
+
     next()
   } catch (error) {
     throw new UnauthorizedError()
