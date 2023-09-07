@@ -1,0 +1,18 @@
+GET http://localhost:5000/api/v1/products
+
+
+# POST http://localhost:5000/api/v1/products
+# Content-Type: application/json
+
+# {
+#     "title":"Hawaiian Teriyaki",
+#     "description":"Experience a taste of the tropics with a juicy beef patty glazed in tangy teriyaki sauce, topped with grilled pineapple, crispy bacon, and fresh lettuce, and all the classic fixings on a toasted bun.",
+#     "price":  32.9,
+#     "image": "https://res.cloudinary.com/ddzi0yh71/image/upload/v1693599181/restaurant/p9_c4gp15.png",
+#     "options": [
+#         { "title": "Small", "additionalPrice": 0 },
+#         { "title": "Medium", "additionalPrice": 4 },
+#         { "title": "Large", "additionalPrice": 8 }
+#         ],
+#     "category":"burgers"
+# }

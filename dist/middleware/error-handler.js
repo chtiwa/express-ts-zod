@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseError = require("../errors/base-error");
 const errorHandler = (err, req, res) => {
-    console.log(err);
+    console.log("error-handler.ts ===> ", err);
     if (err instanceof BaseError) {
         return res
             .status(err.statusCode)

@@ -1,4 +1,5 @@
 "use strict";
+// @ts-ignore
 class BaseError extends Error {
     constructor(name, statusCode, messsage) {
         super(messsage);
@@ -8,3 +9,4 @@ class BaseError extends Error {
         Error.captureStackTrace(this);
     }
 }
+module.exports = BaseError;

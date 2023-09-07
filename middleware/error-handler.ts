@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 const BaseError = require("../errors/base-error")
 
 const errorHandler = (err: any, req: Request, res: Response) => {
-  console.log(err)
+  console.log("error-handler.ts ===> ", err)
   if (err instanceof BaseError) {
     return res
       .status(err.statusCode)

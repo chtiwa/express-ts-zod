@@ -17,14 +17,22 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const connectDb = require("./db/connect");
-const postsRoutes = require("./routes/posts");
+const productsRoutes = require("./routes/products");
+const usersRoutes = require("./routes/users");
+const ordersRoutes = require("./routes/orders");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+app.use(cors({ origin: [process.env.CLIENT_URL], credentials: true }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 const port = process.env.PORT || 5000;
 app.get("/", (req, res) => {
-    res.send("This is quite nice actually");
+    res.send("Hello world!");
 });
-app.use("/api/v1/posts", postsRoutes);
+app.use("/api/v1/products", productsRoutes);
+app.use("/api/v1/users", usersRoutes);
+app.use("/api/v1/orders", ordersRoutes);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield connectDb(process.env.MONGODB_URI);
