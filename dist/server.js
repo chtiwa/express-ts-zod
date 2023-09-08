@@ -58,12 +58,13 @@ app.use(
 app.use(express_1.default.json())
 app.use(express_1.default.urlencoded({ extended: true }))
 const port = process.env.PORT || 5000
-app.get("/", (req, res) => {
-  res.send("Hello world!")
-})
+
 app.use("/api/v1/products", productsRoutes)
 app.use("/api/v1/users", usersRoutes)
 app.use("/api/v1/orders", ordersRoutes)
+app.use("/api/v1", (req, res) => {
+  res.status(200).json({ success: true })
+})
 const start = () =>
   __awaiter(void 0, void 0, void 0, function* () {
     try {

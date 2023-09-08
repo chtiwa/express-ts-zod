@@ -23,13 +23,13 @@ app.use(express.urlencoded({ extended: true }))
 
 const port = process.env.PORT || 5000
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello world!")
-})
-
 app.use("/api/v1/products", productsRoutes)
 app.use("/api/v1/users", usersRoutes)
 app.use("/api/v1/orders", ordersRoutes)
+
+app.use("/api/v1", (req: Request, res: Response) => {
+  res.status(200).json({ success: true })
+})
 
 const start = async () => {
   try {
