@@ -12,7 +12,12 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 
 app.use(cookieParser())
-app.use(cors({ origin: [process.env.CLIENT_URL], credentials: true }))
+app.use(
+  cors({
+    origin: [process.env.CLIENT_URL, process.env.PORTFOLIO_URL],
+    credentials: true
+  })
+)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
